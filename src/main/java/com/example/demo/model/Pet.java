@@ -15,14 +15,14 @@ import java.time.LocalDate;
 @Setter
 public class Pet extends NameEntity {
     @Column(name="birth_date")
-    private LocalDate BirthDate;
+    private LocalDate birthDate;
 
     @JoinColumn(name="type_id")
     @ManyToOne
-    private int type_id;
+    private PetType type;
 
     @JoinColumn(name="owner_id")
     @ManyToOne
-    private int owner_id;
+    private Owner owner;
 
 }
