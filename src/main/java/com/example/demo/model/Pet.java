@@ -4,11 +4,10 @@ import com.example.demo.model.common.NameEntity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -25,4 +24,11 @@ public class Pet extends NameEntity {
     @JoinColumn(name="owner_id")
     private Owner owner;
 
+    @Transient
+    private Set<Visit> visits = new LinkedHashSet<>();
+
+    public void addVisit(Visit visit) {
+        this.getVisits().add(visit);
+        visit.setPetId(this.getId());
+    }
 }

@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 
 @Entity
@@ -14,13 +15,13 @@ import java.time.LocalDate;
 @Setter
 @Table(name="visits")
 public class Visit extends BaseEntity {
-    @ManyToOne
+
     @JoinColumn(name="pet_id")
-    private Pet pet;
+    private Integer petId;
 
     @Column(name="visit_date")
     private LocalDate date;
-
+    @NotEmpty
     @Column(name="description")
     private String description;
 }
