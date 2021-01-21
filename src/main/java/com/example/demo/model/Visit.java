@@ -1,27 +1,24 @@
 package com.example.demo.model;
 
-
-import com.example.demo.model.common.BaseEntity;
+import com.example.demo.model.comon.BaseEntity;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import org.springframework.data.util.Lazy;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
-@Getter
-@Setter
-@Table(name="visits")
+@Data
 public class Visit extends BaseEntity {
-
-    @JoinColumn(name="pet_id")
-    private Integer petId;
-
-    @Column(name="visit_date")
+    //ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    Pet pet;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
-    @NotEmpty
-    @Column(name="description")
-    private String description;
+    private String description=null;
 }

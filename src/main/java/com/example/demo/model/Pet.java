@@ -1,34 +1,37 @@
 package com.example.demo.model;
 
-import com.example.demo.model.common.NameEntity;
-import lombok.Getter;
-import lombok.Setter;
+import com.example.demo.model.comon.BaseEntity;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.Date;
+import java.util.List;
 
 @Entity
-@Getter
-@Setter
-public class Pet extends NameEntity {
-    @Column(name="birth_date")
-    private LocalDate birthDate;
-
-    @ManyToOne
+@Data
+public class Pet extends BaseEntity {
+    private String name;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    LocalDate birthDate;
+    @OneToMany
+    @JoinColumn(name="visit_id")
+    List<Visit> visits;
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="type_id")
-    private PetType type;
+    private Type type;
 
-    @ManyToOne
-    @JoinColumn(name="owner_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="onwer_id")
     private Owner owner;
 
-    @Transient
-    private Set<Visit> visits = new LinkedHashSet<>();
-
-    public void addVisit(Visit visit) {
-        this.getVisits().add(visit);
-        visit.setPetId(this.getId());
+    //연관관계매핑
+    public void setType(Type type){
+        this.type=type;
+        type.getPets().add(this);
     }
+
 }

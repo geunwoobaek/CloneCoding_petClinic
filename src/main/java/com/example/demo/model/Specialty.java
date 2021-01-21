@@ -1,11 +1,15 @@
 package com.example.demo.model;
 
-import com.example.demo.model.common.NameEntity;
+import com.example.demo.model.comon.BaseEntity;
 
 import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name="specialties")
-public class Specialty extends NameEntity {
+public class Specialty extends BaseEntity {
+    String name;
+    @OneToMany(mappedBy = "specialty")
+    List<VetSpecialty> vetSpecialtyList = new ArrayList();
 }

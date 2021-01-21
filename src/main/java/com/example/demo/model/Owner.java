@@ -1,36 +1,25 @@
 package com.example.demo.model;
 
-
-import com.example.demo.model.common.Person;
-import lombok.Getter;
-import lombok.Setter;
+import com.example.demo.model.comon.Person;
+import lombok.Builder;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotEmpty;
-import java.util.Set;
-
+import java.util.List;
 
 @Entity
-@Getter
-@Setter
-@Table(name = "owners")
+@Table(name="owners")
+@Data
 public class Owner extends Person {
+    @Embedded
+    private OwnerInfo info;
+    @OneToMany(mappedBy = "owner")
+    private List<Pet> pets;
 
-    @Column(name = "address")
-    @NotEmpty
-    private String address;
-
-    @Column(name = "city")
-    @NotEmpty
-    private String city;
-
-    @Column(name = "telephone")
-    @NotEmpty
-    @Digits(fraction=0,integer=10)
-    private String telephone;
-
-    @OneToMany(cascade=CascadeType.ALL,mappedBy="owner")
-    private Set<Pet> pets;
-
+    //연관관계
+    public void AddPet(Pet pet){
+        pets.add(pet);
+        pet.setOwner(this);
+    }
 }
