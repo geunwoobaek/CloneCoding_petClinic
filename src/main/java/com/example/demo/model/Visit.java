@@ -15,10 +15,14 @@ import java.util.Date;
 @Entity
 @Data
 public class Visit extends BaseEntity {
-    //ManyToOne
-    @ManyToOne(fetch = FetchType.LAZY)
-    Pet pet;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate date;
-    private String description=null;
+
+	// ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
+	Pet pet;
+
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate date;
+
+	private String description = null;
+
 }

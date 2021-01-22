@@ -10,12 +10,11 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class PetService {
-    private final PetRepository petRepository;
 
-    public void addPet(Pet pet){
-        petRepository.save(pet);
-    }
-    public List<Pet> findByPetsName(String name){
-       // return petRepository.findAllByName(name).forEach(o->map(name));
-    }
+	private final PetRepository petRepository;
+
+	public void addPet(Pet pet) {
+		petRepository.save(pet);
+	}
+
 }

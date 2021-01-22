@@ -11,12 +11,13 @@ import javax.persistence.ManyToOne;
 @Entity
 @Data
 public class VetSpecialty extends BaseEntity {
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="vet_id")
-    Vet vet;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="specialties_id")
-    Specialty specialty;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "vet_id")
+	Vet vet;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "specialties_id")
+	Specialty specialty;
 
 }

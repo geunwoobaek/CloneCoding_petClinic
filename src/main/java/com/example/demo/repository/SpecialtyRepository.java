@@ -1,8 +1,10 @@
 package com.example.demo.repository;
 
-import com.example.demo.model.Owner;
 import com.example.demo.model.Specialty;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface SpecialtyRepository extends JpaRepository<Specialty,Long> {
+@Repository
+public interface SpecialtyRepository extends JpaRepository<Specialty, Long> {
+
 }

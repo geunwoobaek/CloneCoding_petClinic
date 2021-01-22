@@ -9,7 +9,11 @@ import javax.persistence.Embeddable;
 @Embeddable
 @Data
 public class OwnerInfo {
-    String address;
-    String city;
-    String telephone;
+
+	String address;
+
+	String city;
+
+	String telephone;
+
 }

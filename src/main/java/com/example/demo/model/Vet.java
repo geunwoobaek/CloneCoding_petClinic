@@ -11,10 +11,11 @@ import javax.persistence.Table;
 import java.util.List;
 
 @Entity
-@Table(name="vets")
+@Table(name = "vets")
 @Data
 public class Vet extends Person {
-    @OneToMany(mappedBy = "vet")
-    List<VetSpecialty> vetSpecialtiesList;
+
+	@OneToMany(mappedBy = "vet")
+	List<VetSpecialty> vetSpecialtiesList;
 
 }

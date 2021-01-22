@@ -10,7 +10,10 @@ import java.util.List;
 @Entity
 @Data
 public class Type extends BaseEntity {
-    private String name;
-    @OneToMany(mappedBy = "type")
-    List<Pet> pets;
+
+	private String name;
+
+	@OneToMany(mappedBy = "type")
+	List<Pet> pets;
+
 }

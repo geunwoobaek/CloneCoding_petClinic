@@ -9,7 +9,10 @@ import java.util.List;
 
 @Entity
 public class Specialty extends BaseEntity {
-    String name;
-    @OneToMany(mappedBy = "specialty")
-    List<VetSpecialty> vetSpecialtyList = new ArrayList();
+
+	String name;
+
+	@OneToMany(mappedBy = "specialty")
+	List<VetSpecialty> vetSpecialtyList = new ArrayList();
+
 }
