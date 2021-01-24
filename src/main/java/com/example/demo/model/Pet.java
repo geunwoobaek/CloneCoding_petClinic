@@ -20,15 +20,15 @@ public class Pet extends BaseEntity {
 
 	@OneToMany
 	@JoinColumn(name = "visit_id")
-	List<Visit> visits=new ArrayList<>();
+	List<Visit> visits = new ArrayList<>();
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "type_id")
-	private Type type=null;
+	private Type type = null;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "onwer_id")
-	private Owner owner=null;
+	private Owner owner = null;
 
 	// 연관관계매핑
 	public void setType(Type type) {

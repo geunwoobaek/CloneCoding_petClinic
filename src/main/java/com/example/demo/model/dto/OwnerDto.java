@@ -1,6 +1,6 @@
 package com.example.demo.model.dto;
 
-import lombok.AllArgsConstructor;
+import com.querydsl.core.annotations.QueryProjection;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,9 +8,19 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class OwnerDto {
-    private String firstName;
-    private String lastName;
-    private List<String> pets;
+
+	private String firstName;
+
+	private String lastName;
+
+	private List<String> pets;
+
+	@QueryProjection
+	public OwnerDto(String firstName, String lastName, List<String> pets) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.pets = pets;
+	}
+
 }

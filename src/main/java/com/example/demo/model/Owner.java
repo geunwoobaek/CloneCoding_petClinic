@@ -19,7 +19,7 @@ public class Owner extends Person {
 	private OwnerInfo info;
 
 	@OneToMany(mappedBy = "owner")
-	private List<Pet> pets=new ArrayList<>();
+	private List<Pet> pets = new ArrayList<>();
 
 	// 연관관계
 	public void AddPet(Pet pet) {
