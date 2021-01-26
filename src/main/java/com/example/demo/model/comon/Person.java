@@ -9,7 +9,6 @@ import javax.persistence.MappedSuperclass;
 public class Person extends BaseEntity {
 
 	String firstName;
-
 	String lastName;
 
 	public void setFullName(String firstName, String lastName) {

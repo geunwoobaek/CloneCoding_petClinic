@@ -5,23 +5,20 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "owners")
 @Getter
 @NoArgsConstructor
+@Table(name = "owners")
 public class Owner extends Person {
 
 	@Embedded
 	private OwnerInfo info;
 
-	@OneToMany(mappedBy = "owner")
+	@OneToMany(mappedBy = "owner",cascade = CascadeType.ALL)
 	private List<Pet> pets = new ArrayList<>();
 
 	// 연관관계
@@ -34,5 +31,4 @@ public class Owner extends Person {
 	this.info=info;
 	this.pets=pets;
 	}
-
 }

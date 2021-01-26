@@ -60,16 +60,12 @@ public class DomainTest {
 	@DisplayName("초기 데이터 입력")
 	void initTest() {
 
-		pet1 = new Pet();
-		pet2 = new Pet();
-
-		pet1.setName("pet1");
-		LocalDate birthDate = LocalDate.of(2019, 1, 2);
-		pet1.setBirthDate(birthDate);
-
-		pet2.setName("pet2");
-		LocalDate birthDate2 = LocalDate.of(2018, 4, 12);
-		pet2.setBirthDate(birthDate);
+		pet1 = new Pet().builder().
+				name("pet1").birthDate(LocalDate.of(2019, 1, 2)).build();
+		pet2 = new Pet().builder().
+				name("pet2").birthDate(LocalDate.of(2018, 2, 10)).build();
+		pet1.setType(new Type().builder().name("Cat").build());
+		pet2.setType(new Type().builder().name("Cat").build());
 
 		petRepository.save(pet1);
 		petRepository.save(pet2);
