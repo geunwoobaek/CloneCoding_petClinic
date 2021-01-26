@@ -10,10 +10,12 @@ import java.util.Map;
 @Controller
 @RequiredArgsConstructor
 public class VetController {
-    private final VetService vetService;
-    @GetMapping("/veterinarians")
-    public String ViewVeterinarians(Map<String, Object> model) {
-        model.put("vets",vetService.getVetListUsingJoinFetch());
-        return "vets/vetList";
-    }
+
+	private final VetService vetService;
+	@GetMapping("/veterinarians")
+	public String ViewVeterinarians(Map<String, Object> model) {
+		model.put("vets", vetService);
+		return "vets/vetList";
+	}
+
 }

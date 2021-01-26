@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 import com.example.demo.model.comon.BaseEntity;
 import lombok.Data;
+import org.hibernate.annotations.BatchSize;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -11,16 +12,17 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name="specialties")
+@Table(name = "specialties")
 @Data
 public class Specialty extends BaseEntity {
 
 	String name;
 
-	@OneToMany(mappedBy = "specialty",cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "specialty", cascade = CascadeType.ALL)
+	@BatchSize(size = 100)
 	Set<VetSpecialty> vetSpecialtyList = new HashSet<>();
 
-	public void addVetSpecialty(VetSpecialty vetSpecialty){
+	public void addVetSpecialty(VetSpecialty vetSpecialty) {
 		vetSpecialtyList.add(vetSpecialty);
 	}
 

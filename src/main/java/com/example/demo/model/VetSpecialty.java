@@ -10,22 +10,23 @@ import javax.persistence.*;
 @Entity
 @Getter
 @NoArgsConstructor
-@Table(name="vet_specialties")
+@Table(name = "vet_specialties")
 public class VetSpecialty extends BaseEntity {
 
-	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "vet_id")
 	Vet vet;
 
-	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "specialties_id")
 	Specialty specialty;
+
 	@Builder
-	public VetSpecialty(Vet vet,Specialty specialty)
-	{
-		this.vet=vet;
+	public VetSpecialty(Vet vet, Specialty specialty) {
+		this.vet = vet;
 		vet.addVetSpecialty(this);
-		this.specialty=specialty;
+		this.specialty = specialty;
 		specialty.addVetSpecialty(this);
 	}
+
 }

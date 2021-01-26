@@ -10,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name="types")
+@Table(name = "types")
 public class Type extends BaseEntity {
 
 	private String name;

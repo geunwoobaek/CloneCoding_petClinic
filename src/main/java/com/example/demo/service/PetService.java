@@ -14,15 +14,21 @@ import java.util.List;
 @RequiredArgsConstructor
 @Transactional
 public class PetService {
-    private final PetRepository petRepository;
-    private final TypeRepository typeRepository;
-    public Pet addPet(Pet pet) {
-        return petRepository.save(pet);
-    }
-    public Pet findPetById(Long id) {
-        return petRepository.findPetById(id);
-    }
-    public List<Type> findPetTypes(){
-        return typeRepository.findAll();
-    }
+
+	private final PetRepository petRepository;
+
+	private final TypeRepository typeRepository;
+
+	public Pet addPet(Pet pet) {
+		return petRepository.save(pet);
+	}
+
+	public Pet findPetById(Long id) {
+		return petRepository.findPetById(id);
+	}
+
+	public List<Type> findPetTypes() {
+		return typeRepository.findAll();
+	}
+
 }

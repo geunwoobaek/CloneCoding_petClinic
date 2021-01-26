@@ -10,7 +10,8 @@ import javax.persistence.MappedSuperclass;
 @Getter
 public class BaseEntity {
 
-	@Id @GeneratedValue
+	@Id
+	@GeneratedValue
 	Long id;
 
 	public boolean isNew() {

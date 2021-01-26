@@ -2,8 +2,9 @@ package com.example.demo.annotation;
 
 import java.lang.annotation.*;
 
-@Target({ElementType.METHOD})
+@Target({ ElementType.METHOD })
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @interface MergeAndDetached {
+
 }

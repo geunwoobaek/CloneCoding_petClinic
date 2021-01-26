@@ -12,7 +12,7 @@ import java.time.LocalDate;
 
 @Entity
 @Data
-@Table(name="visits")
+@Table(name = "visits")
 public class Visit extends BaseEntity {
 
 	// ManyToOne

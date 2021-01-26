@@ -5,5 +5,6 @@ import com.example.demo.model.Vet;
 import java.util.List;
 
 public interface VetRepositoryCustom {
-    List<Vet> findVetListByJoinFetch();
+	List<Vet> findVetListByJoinFetch();
+
 }

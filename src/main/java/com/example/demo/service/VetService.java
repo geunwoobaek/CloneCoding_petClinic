@@ -8,26 +8,32 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 @Transactional
+@XmlRootElement
 public class VetService {
-    private final VetRepository vetRepository;
-    private final VetConverter vetConverter;
 
-    public List<VetDto> getVetListUsingBatch() {
-        return vetConverter.ConvertToDtos(vetRepository.findAll());
-    }
-    public List<VetDto> getVetListUsingJoinFetch() {
-        return vetConverter.ConvertToDtos(vetRepository.findVetListByJoinFetch());
-    }
-    public void save(Vet vet) {
-        vetRepository.save(vet);
-    }
-    public void PrintAll() {
-        System.out.println(getVetListUsingJoinFetch());
-    }
+	private final VetRepository vetRepository;
+
+	private final VetConverter vetConverter;
+	@XmlElement
+	public List<VetDto> getVetList() {
+		return vetConverter.ConvertToDtos(vetRepository.findAll());
+	}
+
+	public void save(Vet vet) {
+		vetRepository.save(vet);
+	}
+
+	public void PrintAll() {
+		getVetList().stream().forEach(vet->
+				System.out.println(
+						"의사: "+vet.getFirstName()+vet.getLastName()+", 전문의는 "+vet.getSpecialties().toString()));
+	}
 
 }

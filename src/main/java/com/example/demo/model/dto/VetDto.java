@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.xml.bind.annotation.XmlElement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,14 +12,20 @@ import java.util.List;
 @NoArgsConstructor
 public class VetDto {
 
-    String firstName;
-    String lastName;
-    List<String> Specialties=new ArrayList<>();
+	@XmlElement
+	String firstName;
 
-    @Builder
-    public VetDto(String firstName,String lastName,List<String> Specialties){
-    this.firstName=firstName;
-    this.lastName=lastName;
-    this.Specialties=Specialties;
-    }
+	@XmlElement
+	String lastName;
+
+	@XmlElement
+	List<String> Specialties = new ArrayList<>();
+
+	@Builder
+	public VetDto(String firstName, String lastName, List<String> Specialties) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.Specialties = Specialties;
+	}
+
 }

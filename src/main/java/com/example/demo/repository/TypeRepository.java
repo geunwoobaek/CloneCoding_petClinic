@@ -8,5 +8,7 @@ import java.util.List;
 
 @Repository
 public interface TypeRepository extends JpaRepository<Type, Long> {
-    List<Type> findAll();
+
+	List<Type> findAll();
+
 }
