@@ -11,6 +11,7 @@ import java.util.List;
 
 @Entity
 @Data
+@Table(name="pets")
 public class Pet extends BaseEntity {
 
 	private String name;

@@ -6,12 +6,15 @@ import com.example.demo.model.Type;
 import com.example.demo.model.Vet;
 import com.example.demo.model.dto.OwnerDto;
 import com.example.demo.repository.*;
+import com.example.demo.repository.vet.VetRepository;
+import com.example.demo.repository.owner.OwnerRepository;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
@@ -20,6 +23,7 @@ import java.util.List;
 @SpringBootTest
 @Transactional
 @DisplayName("전체 도메인 테스트")
+@TestPropertySource("classpath:application.yml")
 public class DomainTest {
 
     Pet pet1, pet2;

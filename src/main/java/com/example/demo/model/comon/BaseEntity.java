@@ -13,4 +13,8 @@ public class BaseEntity {
 	@Id @GeneratedValue
 	Long id;
 
+	public boolean isNew() {
+		return this.id == null;
+	}
+
 }

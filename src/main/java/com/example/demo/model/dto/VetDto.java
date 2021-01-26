@@ -1,18 +1,24 @@
 package com.example.demo.model.dto;
 
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
-@RequiredArgsConstructor
+@Getter
+@NoArgsConstructor
 public class VetDto {
-    String name;
+
+    String firstName;
+    String lastName;
     List<String> Specialties=new ArrayList<>();
-    public VetDto(String name,List<String> Specialties){
-    this.name=name;
+
+    @Builder
+    public VetDto(String firstName,String lastName,List<String> Specialties){
+    this.firstName=firstName;
+    this.lastName=lastName;
     this.Specialties=Specialties;
     }
 }

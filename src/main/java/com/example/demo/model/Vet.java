@@ -7,8 +7,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "vets")
@@ -16,10 +16,12 @@ import java.util.List;
 public class Vet extends Person {
 
 	@OneToMany(mappedBy = "vet",cascade = CascadeType.ALL)
-	List<VetSpecialty> vetSpecialtyList = new ArrayList();
+	Set<VetSpecialty> vetSpecialtyList = new HashSet<>();
 
+	//연관관계 메서드
 	public void addVetSpecialty(VetSpecialty vetSpecialty){
 		vetSpecialtyList.add(vetSpecialty);
 	}
 
+	//
 }

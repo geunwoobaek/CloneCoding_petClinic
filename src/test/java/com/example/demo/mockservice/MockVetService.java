@@ -13,8 +13,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.SpyBean;
+import org.springframework.test.context.TestPropertySource;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@TestPropertySource("classpath:application.yml")
 @ExtendWith(MockitoExtension.class)
 class MockVetService {
     @SpyBean
@@ -47,26 +49,13 @@ class MockVetService {
         Specialty specialty3 = new Specialty();
         specialty3.setName("Surgery3");
 
+
         VetSpecialty vetSpecialty1=new VetSpecialty().builder().vet(vet1).specialty(specialty1).build();
         VetSpecialty vetSpecialty2=new VetSpecialty().builder().vet(vet1).specialty(specialty3).build();
         VetSpecialty vetSpecialty3=new VetSpecialty().builder().vet(vet2).specialty(specialty2).build();
         VetSpecialty vetSpecialty4=new VetSpecialty().builder().vet(vet2).specialty(specialty3).build();
         VetSpecialty vetSpecialty5=new VetSpecialty().builder().vet(vet3).specialty(specialty1).build();
         VetSpecialty vetSpecialty6=new VetSpecialty().builder().vet(vet3).specialty(specialty2).build();
-
-        vet1.addVetSpecialty(vetSpecialty1);
-        vet1.addVetSpecialty(vetSpecialty2);
-        vet2.addVetSpecialty(vetSpecialty3);
-        vet2.addVetSpecialty(vetSpecialty4);
-        vet3.addVetSpecialty(vetSpecialty5);
-        vet3.addVetSpecialty(vetSpecialty6);
-
-        specialty1.addVetSpecialty(vetSpecialty1);
-        specialty1.addVetSpecialty(vetSpecialty5);
-        specialty2.addVetSpecialty(vetSpecialty3);
-        specialty2.addVetSpecialty(vetSpecialty6);
-        specialty3.addVetSpecialty(vetSpecialty2);
-        specialty3.addVetSpecialty(vetSpecialty4);
 
         System.out.println(vetSpecialityService.addOne(vetSpecialty1));
         System.out.println(vetSpecialityService.addOne(vetSpecialty2));

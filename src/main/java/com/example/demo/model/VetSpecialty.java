@@ -10,6 +10,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @NoArgsConstructor
+@Table(name="vet_specialties")
 public class VetSpecialty extends BaseEntity {
 
 	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
@@ -23,6 +24,8 @@ public class VetSpecialty extends BaseEntity {
 	public VetSpecialty(Vet vet,Specialty specialty)
 	{
 		this.vet=vet;
+		vet.addVetSpecialty(this);
 		this.specialty=specialty;
+		specialty.addVetSpecialty(this);
 	}
 }

@@ -7,8 +7,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="specialties")
@@ -18,7 +18,7 @@ public class Specialty extends BaseEntity {
 	String name;
 
 	@OneToMany(mappedBy = "specialty",cascade = CascadeType.ALL)
-	List<VetSpecialty> vetSpecialtyList = new ArrayList();
+	Set<VetSpecialty> vetSpecialtyList = new HashSet<>();
 
 	public void addVetSpecialty(VetSpecialty vetSpecialty){
 		vetSpecialtyList.add(vetSpecialty);

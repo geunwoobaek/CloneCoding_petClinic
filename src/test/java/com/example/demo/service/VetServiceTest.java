@@ -8,9 +8,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
 
 @SpringBootTest
-//@ExtendWith(MockitoExtension.class)
+@TestPropertySource("classpath:application.yml")
 class VetServiceTest {
     @Autowired
     VetSpecialityService vetSpecialityService;
@@ -18,17 +19,10 @@ class VetServiceTest {
     VetService vetService;
     @Autowired
     SpecialtyService specialtyService;
-//    @SpyBean
-//    VetSpecialtyRepository vetSpecialtyRepository;
-//    @SpyBean
-//    SpecialtyRepository specialtyRepository;
-//    @SpyBean
-//    VetRepository vetRepository;
 
     @BeforeEach
     @DisplayName("초기 데이터 입력")
     void init() {
-//        setUp();
         Vet vet1 = new Vet();
         vet1.setFullName("Harry", "Kane");
         Vet vet2 = new Vet();
@@ -49,20 +43,6 @@ class VetServiceTest {
         VetSpecialty vetSpecialty5=new VetSpecialty().builder().vet(vet3).specialty(specialty1).build();
         VetSpecialty vetSpecialty6=new VetSpecialty().builder().vet(vet3).specialty(specialty2).build();
 
-        vet1.addVetSpecialty(vetSpecialty1);
-        vet1.addVetSpecialty(vetSpecialty2);
-        vet2.addVetSpecialty(vetSpecialty3);
-        vet2.addVetSpecialty(vetSpecialty4);
-        vet3.addVetSpecialty(vetSpecialty5);
-        vet3.addVetSpecialty(vetSpecialty6);
-
-        specialty1.addVetSpecialty(vetSpecialty1);
-        specialty1.addVetSpecialty(vetSpecialty5);
-        specialty2.addVetSpecialty(vetSpecialty3);
-        specialty2.addVetSpecialty(vetSpecialty6);
-        specialty3.addVetSpecialty(vetSpecialty2);
-        specialty3.addVetSpecialty(vetSpecialty4);
-
         System.out.println(vetSpecialityService.addOne(vetSpecialty1));
         System.out.println(vetSpecialityService.addOne(vetSpecialty2));
         System.out.println(vetSpecialityService.addOne(vetSpecialty3));
@@ -78,11 +58,7 @@ class VetServiceTest {
        System.out.println("Start");
         vetSpecialityService.PrintAll();
         vetService.PrintAll();
-       specialtyService.PrintAll();
+        specialtyService.PrintAll();
     }
-//    void setUp(){
-//        vetSpecialityService=new VetSpecialityService(vetSpecialtyRepository);
-//        vetService=new VetService(vetRepository);
-//        specialtyService=new SpecialtyService(specialtyRepository);
-//    }
+
 }

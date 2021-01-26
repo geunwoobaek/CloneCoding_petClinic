@@ -1,42 +1,33 @@
 package com.example.demo.service;
 
+import com.example.demo.converter.VetConverter;
 import com.example.demo.model.Vet;
 import com.example.demo.model.dto.VetDto;
-import com.example.demo.repository.VetRepository;
+import com.example.demo.repository.vet.VetRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
-
-import static java.util.Collections.emptyList;
 
 @Service
 @RequiredArgsConstructor
 @Transactional
 public class VetService {
     private final VetRepository vetRepository;
+    private final VetConverter vetConverter;
 
-    public List<VetDto> findAllList() {
-        List<Vet> Vets=vetRepository.findAll();
-        if (Vets == null) return emptyList();
-        else
-            return Vets.
-                    stream().
-                    map(vets -> new VetDto(vets.getFirstName() + vets.getLastName(),
-                            vets.getVetSpecialtyList().
-                                    stream().
-                                    map(specialty -> specialty.getSpecialty().getName()).
-                                    collect(Collectors.toList()))).
-                    collect(Collectors.toList());
+    public List<VetDto> getVetListUsingBatch() {
+        return vetConverter.ConvertToDtos(vetRepository.findAll());
+    }
+    public List<VetDto> getVetListUsingJoinFetch() {
+        return vetConverter.ConvertToDtos(vetRepository.findVetListByJoinFetch());
     }
     public void save(Vet vet) {
         vetRepository.save(vet);
     }
     public void PrintAll() {
-        System.out.print("Vet:");
-        vetRepository.findAll().stream().forEach(node -> System.out.println(node.getFirstName()));
-        System.out.println();
+        System.out.println(getVetListUsingJoinFetch());
     }
+
 }

@@ -19,7 +19,7 @@ public class VetSpecialityService {
     public void PrintAll() {
         System.out.print("vetSpecialty:");
         System.out.println("size=" + vetSpecialtyRepository.findAll().size());
-        vetSpecialtyRepository.findAll().stream().forEach(node -> System.out.print(node.getVet().getFirstName() + ", 전문의는 =" + node.getSpecialty().getName()));
+        vetSpecialtyRepository.findAll().stream().forEach(node -> System.out.println("의사이름은:"+node.getVet().getFirstName() + " , 전문의는 =" + node.getSpecialty().getName()));
         System.out.println();
     }
 }
