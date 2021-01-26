@@ -25,12 +25,6 @@ class MockVetService {
     VetService vetService;
     @SpyBean
     SpecialtyService specialtyService;
-//    @MockBean
-//    VetSpecialtyRepository vetSpecialtyRepository;
-//    @MockBean
-//    SpecialtyRepository specialtyRepository;
-//    @MockBean
-//    VetRepository vetRepository;
 
     @BeforeEach
     @DisplayName("초기 데이터 입력")
@@ -70,9 +64,9 @@ class MockVetService {
     @Test
     void PrintTest() {
        System.out.println("Start");
-        vetSpecialityService.PrintAll();
-        vetService.PrintAll();
-       specialtyService.PrintAll();
+//        vetSpecialityService.PrintAll();
+//        vetService.PrintAll();
+//       specialtyService.PrintAll();
     }
 //    void setUp(){
 //        vetSpecialityService=new VetSpecialityService(vetSpecialtyRepository);
