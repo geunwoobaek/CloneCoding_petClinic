@@ -5,5 +5,7 @@ import java.util.List;
 public interface OwnerRepositoryCustom {
 
 	List findAllPetByOwner();
+
 	List findAllOwnerByFetchJoin();
+
 }

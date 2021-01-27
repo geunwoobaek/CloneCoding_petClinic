@@ -12,6 +12,7 @@ import java.util.Map;
 public class VetController {
 
 	private final VetService vetService;
+
 	@GetMapping("/veterinarians")
 	public String ViewVeterinarians(Map<String, Object> model) {
 		model.put("vets", vetService);

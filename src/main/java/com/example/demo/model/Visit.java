@@ -4,24 +4,30 @@ import com.example.demo.model.comon.BaseEntity;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 
 @Entity
-@Data
 @Table(name = "visits")
+@Data
 public class Visit extends BaseEntity {
 
-	// ManyToOne
-	@ManyToOne(fetch = FetchType.LAZY)
-	Pet pet;
+	public Visit() {
+		this.date = LocalDate.now();
+	}
 
+	@Column(name = "visit_date")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate date;
 
-	private String description = null;
+	@NotEmpty
+	@Column(name = "description")
+	private String description;
+
+	@Column(name = "pet_id")
+	private Long petId;
 
 }

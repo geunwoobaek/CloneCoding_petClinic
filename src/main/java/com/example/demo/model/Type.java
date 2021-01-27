@@ -21,14 +21,16 @@ import java.util.List;
 @AllArgsConstructor
 public class Type extends BaseEntity {
 
-    private String name;
+	private String name;
 
-    @OneToMany(mappedBy = "type",cascade = CascadeType.ALL)
-    List<Pet> pets = new ArrayList<>();
+	@OneToMany(mappedBy = "type", cascade = CascadeType.ALL)
+	List<Pet> pets = new ArrayList<>();
 
-    //연관관계메서드
-    public void AddPet(Pet pet) {
-    	if(pets==null) pets = new ArrayList<>();
-        pets.add(pet);
-    }
+	// 연관관계메서드
+	public void AddPet(Pet pet) {
+		if (pets == null)
+			pets = new ArrayList<>();
+		pets.add(pet);
+	}
+
 }

@@ -21,6 +21,7 @@ public class VetService {
 	private final VetRepository vetRepository;
 
 	private final VetConverter vetConverter;
+
 	@XmlElement
 	public List<VetDto> getVetList() {
 		return vetConverter.ConvertToDtos(vetRepository.findAll());
@@ -31,9 +32,8 @@ public class VetService {
 	}
 
 	public void PrintAll() {
-		getVetList().stream().forEach(vet->
-				System.out.println(
-						"의사: "+vet.getFirstName()+vet.getLastName()+", 전문의는 "+vet.getSpecialties().toString()));
+		getVetList().stream().forEach(vet -> System.out.println(
+				"의사: " + vet.getFirstName() + vet.getLastName() + ", 전문의는 " + vet.getSpecialties().toString()));
 	}
 
 }

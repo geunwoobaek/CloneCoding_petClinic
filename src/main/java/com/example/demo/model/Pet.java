@@ -5,12 +5,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.support.MutableSortDefinition;
+import org.springframework.beans.support.PropertyComparator;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Data
@@ -22,14 +23,14 @@ public class Pet extends BaseEntity {
 
 	private String name;
 
+	@Column(name = "birth_date")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	LocalDate birthDate;
 
-	@OneToMany
-	@JoinColumn(name = "visit_id")
-	List<Visit> visits = new ArrayList<>();
+	@Transient
+	private Set<Visit> visits = new LinkedHashSet<>();
 
-	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "type_id")
 	private Type type;
 
@@ -41,6 +42,28 @@ public class Pet extends BaseEntity {
 	public void setType(Type type) {
 		type.AddPet(this);
 		this.type = type;
+	}
+
+	protected Set<Visit> getVisitsInternal() {
+		if (this.visits == null) {
+			this.visits = new HashSet<>();
+		}
+		return this.visits;
+	}
+
+	protected void setVisitsInternal(Collection<Visit> visits) {
+		this.visits = new LinkedHashSet<>(visits);
+	}
+
+	public List<Visit> getVisits() {
+		List<Visit> sortedVisits = new ArrayList<>(getVisitsInternal());
+		PropertyComparator.sort(sortedVisits, new MutableSortDefinition("date", false, false));
+		return Collections.unmodifiableList(sortedVisits);
+	}
+
+	public void addVisit(Visit visit) {
+		getVisitsInternal().add(visit);
+		visit.setPetId(this.getId());
 	}
 
 }

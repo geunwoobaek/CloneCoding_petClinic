@@ -46,12 +46,12 @@ class VetServiceTest {
 		VetSpecialty vetSpecialty5 = new VetSpecialty().builder().vet(vet3).specialty(specialty1).build();
 		VetSpecialty vetSpecialty6 = new VetSpecialty().builder().vet(vet3).specialty(specialty2).build();
 
-		System.out.println("1."+vetSpecialityService.addOne(vetSpecialty1));
-		System.out.println("2."+vetSpecialityService.addOne(vetSpecialty2));
-		System.out.println("3."+vetSpecialityService.addOne(vetSpecialty3));
-		System.out.println("4."+vetSpecialityService.addOne(vetSpecialty4));
-		System.out.println("5."+vetSpecialityService.addOne(vetSpecialty5));
-		System.out.println("6."+vetSpecialityService.addOne(vetSpecialty6));
+		System.out.println("1." + vetSpecialityService.addOne(vetSpecialty1));
+		System.out.println("2." + vetSpecialityService.addOne(vetSpecialty2));
+		System.out.println("3." + vetSpecialityService.addOne(vetSpecialty3));
+		System.out.println("4." + vetSpecialityService.addOne(vetSpecialty4));
+		System.out.println("5." + vetSpecialityService.addOne(vetSpecialty5));
+		System.out.println("6." + vetSpecialityService.addOne(vetSpecialty6));
 
 	}
 
@@ -59,9 +59,9 @@ class VetServiceTest {
 	@Test
 	void vetSpecialityServiceTest() {
 		System.out.println("1Start");
-//		vetSpecialityService.PrintAll();
+		// vetSpecialityService.PrintAll();
 		vetService.PrintAll();
-	//	specialtyService.PrintAll();
+		// specialtyService.PrintAll();
 	}
 
 }

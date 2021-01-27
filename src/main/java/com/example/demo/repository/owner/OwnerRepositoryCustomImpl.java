@@ -31,11 +31,8 @@ public class OwnerRepositoryCustomImpl implements OwnerRepositoryCustom {
 
 	@Override
 	public List findAllOwnerByFetchJoin() {
-		return query.selectDistinct(QOwner.owner).
-				from(QOwner.owner).
-				innerJoin(QOwner.owner.pets, QPet.pet).
-				fetchJoin().
-				fetch();
+		return query.selectDistinct(QOwner.owner).from(QOwner.owner).innerJoin(QOwner.owner.pets, QPet.pet).fetchJoin()
+				.fetch();
 	}
 
 }

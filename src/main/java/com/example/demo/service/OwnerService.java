@@ -16,17 +16,23 @@ import java.util.List;
 public class OwnerService {
 
 	private final OwnerRepository ownerRepository;
-	public Owner Join(Owner owner){
+	private final OwnerConverter ownerConverter;
+	public Owner Join(Owner owner) {
 		return ownerRepository.save(owner);
 	}
-	private final OwnerConverter ownerConverter;
+	public OwnerDto Join(OwnerDto owner) {
+		return (OwnerDto)ownerConverter.DomainToDto(ownerRepository.save((Owner)ownerConverter.DtoToDomain(owner)));
+	}
+
 	@Transactional(readOnly = true)
 	public Owner findOneById(Long ownerId) {
 		return ownerRepository.findOwnerById(ownerId);
 	}
-	public List<OwnerDto> getOwnerList(){
-		List Owners=ownerRepository.findAllOwnerByFetchJoin();
-		List result=ownerConverter.ConvertToDtos(Owners);
+
+	public List<OwnerDto> getOwnerList() {
+		List Owners = ownerRepository.findAllOwnerByFetchJoin();
+		List result = ownerConverter.ConvertToDtos(Owners);
 		return result;
 	}
+
 }

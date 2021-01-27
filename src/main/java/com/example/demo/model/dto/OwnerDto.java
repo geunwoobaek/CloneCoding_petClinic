@@ -12,9 +12,7 @@ import java.util.List;
 public class OwnerDto {
 
 	private String firstName;
-
 	private String lastName;
-
 	private List<String> pets;
 
 	@QueryProjection

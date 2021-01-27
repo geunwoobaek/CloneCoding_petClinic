@@ -9,14 +9,19 @@ import java.util.stream.Collectors;
 @Component
 public class VetConverter extends DtoConverter {
 
-    @Override
-    public Object ConvertToDto(Object Domain) {
-        Vet vet = (Vet) Domain;
-        VetDto vetDto = new VetDto().builder().firstName((vet).getFirstName()).lastName(vet.getLastName())
-                .Specialties(vet.getVetSpecialtyList().stream().map(specialty -> specialty.getSpecialty().getName())
-                        .collect(Collectors.toList()))
-                .build();
-        return vetDto;
-    }
+	@Override
+	public Object DomainToDto(Object Domain) {
+		Vet vet = (Vet) Domain;
+		VetDto vetDto = new VetDto().builder().firstName((vet).getFirstName()).lastName(vet.getLastName())
+				.Specialties(vet.getVetSpecialtyList().stream().map(specialty -> specialty.getSpecialty().getName())
+						.collect(Collectors.toList()))
+				.build();
+		return vetDto;
+	}
+
+	@Override
+	public Object DtoToDomain(Object Dto) {
+		return null;
+	}
 
 }

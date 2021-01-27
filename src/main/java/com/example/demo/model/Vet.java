@@ -1,7 +1,7 @@
 package com.example.demo.model;
 
 import com.example.demo.model.comon.Person;
-import lombok.Data;
+import lombok.*;
 import org.hibernate.annotations.BatchSize;
 
 import javax.persistence.CascadeType;
@@ -14,6 +14,8 @@ import java.util.Set;
 @Entity
 @Table(name = "vets")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Vet extends Person {
 
 	@OneToMany(mappedBy = "vet", cascade = CascadeType.ALL)
